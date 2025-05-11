@@ -20,14 +20,20 @@ Objectif : Conteneuriser les applications et les déployer dans un cluster Kuber
 
 # Dockerfile
 FROM python:3.6-alpine
+
 WORKDIR /opt
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-COPY . .
+
+COPY . /opt
+
+RUN pip install flask==1.1.2
+
+ENV ODOO_URL=https://www.odoo.com
+ENV PGADMIN_URL=https://www.pgadmin.org
+
 EXPOSE 8080
-ENV ODOO_URL="http://odoo.default.svc.cluster.local"
-ENV PGADMIN_URL="http://pgadmin.default.svc.cluster.local"
+
 ENTRYPOINT ["python", "app.py"]
+
 
 
 ![image](https://github.com/user-attachments/assets/63fa2963-3fcd-4f5f-8609-a49ca2c73500)
