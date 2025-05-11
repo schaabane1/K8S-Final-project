@@ -29,7 +29,8 @@ ENV ODOO_URL="http://odoo.default.svc.cluster.local"
 ENV PGADMIN_URL="http://pgadmin.default.svc.cluster.local"
 ENTRYPOINT ["python", "app.py"]
 
-****![image](https://github.com/user-attachments/assets/212e084b-72fe-4408-aaf5-3fb640e9c232)
+
+[image](https://github.com/user-attachments/assets/212e084b-72fe-4408-aaf5-3fb640e9c232)
 
 2. Fichier requirements.txt
 
