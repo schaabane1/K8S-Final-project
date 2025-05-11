@@ -285,24 +285,49 @@ spec:
 
 Étape VII - Services & accès
 
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: odoo
+  name: odoo-service
   namespace: icgroup
-  labels:
-    app: odoo
-    env: prod
 spec:
   selector:
     app: odoo
   ports:
-  - port: 8069
-    targetPort: 8069
-    protocol: TCP
+    - protocol: TCP
+      port: 8069
+      targetPort: 8069
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgadmin-service
+  namespace: icgroup
+spec:
+  selector:
+    app: pgadmin
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ic-webapp-service
+  namespace: icgroup
+spec:
+  selector:
+    app: ic-webapp
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
   type: NodePort
 
-Faire de même pour pgadmin et ic-webapp avec type: NodePort
 
 
 Étape VIII - Vérifications et conclusion
