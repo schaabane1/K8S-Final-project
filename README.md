@@ -314,26 +314,15 @@ kubectl get all -n icgroup
 2. Conclusion
 
 Toutes les applications sont déployées avec persistance des données
-
 Accès web fonctionnel pour Odoo, pgAdmin, site vitrine
 
-Variables sensibles isolées ou configurées en ConfigMap
 
-Améliorations possibles
-
-Intégration TLS (cert-manager + Ingress)
-
-CI/CD avec GitHub Actions ou GitLab
-
-Utilisation de Secrets pour les mots de passe sensibles
-
-Monitoring via Prometheus/Grafana
 
 Auteur
 
-Nom : [Votre Nom]
+Nom : CHAABANE SAFOUANE
 
-Étudiant 5ESGI DevOps
+Étudiant 5SRC2 DevOps
 
-Date : [à compléter]
+Date : 11/05/2025
 
