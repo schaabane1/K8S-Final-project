@@ -295,7 +295,7 @@ spec:
 
 kubectl get all -n icgroup
 
-![image](https://github.com/user-attachments/assets/ca83b8a8-20e3-4ea6-804a-d23900f0a163)
+![image](https://github.com/user-attachments/assets/f832bda1-75fe-4980-b6d8-e136e12c9dd3)
 
 
 ![image](https://github.com/user-attachments/assets/ec17b6da-213e-4528-8abf-36679f42ddac)
