@@ -29,8 +29,7 @@ ENV ODOO_URL="http://odoo.default.svc.cluster.local"
 ENV PGADMIN_URL="http://pgadmin.default.svc.cluster.local"
 ENTRYPOINT ["python", "app.py"]
 
-![image](https://github.com/user-attachments/assets/5c96c8f1-a569-435f-9844-540c80a9038b)
-
+****![image](https://github.com/user-attachments/assets/212e084b-72fe-4408-aaf5-3fb640e9c232)
 
 2. Fichier requirements.txt
 
@@ -40,6 +39,8 @@ Flask
 
 docker build -t ic-webapp:1.0 .
 
+![image](https://github.com/user-attachments/assets/5c96c8f1-a569-435f-9844-540c80a9038b)
+
 4. Test local avec variables d’environnement
 
 docker run -d --name test-ic-webapp -p 8080:8080 \
@@ -47,16 +48,25 @@ docker run -d --name test-ic-webapp -p 8080:8080 \
   -e PGADMIN_URL=https://www.pgadmin.org \
   ic-webapp:1.0
 
-👉 Capture à insérer ici : affichage site vitrine avec liens vers Odoo et pgAdmin officiels
+![image](https://github.com/user-attachments/assets/a5b57871-7c74-4d9a-9fdf-807d68bde15c)
+
 
 5. Suppression du container de test
 
 docker rm -f test-ic-webapp
 
+![image](https://github.com/user-attachments/assets/02d8625d-1b42-4e76-85f2-742ad5399926)
+
 6. Push sur Docker Hub
 
-docker tag ic-webapp:1.0 <votre_dockerhub>/ic-webapp:1.0
-docker push <votre_dockerhub>/ic-webapp:1.0
+docker tag ic-webapp:1.0 safouane95/ic-webapp:1.0
+docker push safouane95/ic-webapp:1.0
+
+![image](https://github.com/user-attachments/assets/2230bfed-7055-4478-8d50-c95118b6166f)
+
+
+![image](https://github.com/user-attachments/assets/cb75b6aa-360a-46dc-bcba-1cf0fc168b54)
+
 
 Étape II - Déploiement Kubernetes dans Minikube
 
@@ -71,7 +81,8 @@ metadata:
 
 kubectl apply -f namespace.yaml
 
-👉 Capture à insérer ici : kubectl get ns --show-labels
+![image](https://github.com/user-attachments/assets/197e13dd-478a-468b-a2ad-f96fb3ecb804)
+
 
 Étape III - Déploiement PostgreSQL
 
@@ -124,7 +135,8 @@ spec:
     requests:
       storage: 1Gi
 
-👉 Capture : kubectl get pods,pvc -n icgroup
+![image](https://github.com/user-attachments/assets/8dc9eacc-6665-4b9c-b821-1b56ca769d0f)
+
 
 Étape IV - Déploiement Odoo
 
@@ -160,7 +172,8 @@ spec:
         - name: PASSWORD
           value: admin123
 
-👉 Capture : kubectl get svc -n icgroup pour Odoo
+![image](https://github.com/user-attachments/assets/245599c5-1f9a-42c5-9ee8-6407b3ce871e)
+
 
 Étape V - Déploiement pgAdmin avec configuration
 
@@ -181,6 +194,9 @@ spec:
 }
 
 kubectl create configmap pgadmin-config --from-file=servers.json=servers.json -n icgroup
+
+![image](https://github.com/user-attachments/assets/337c6f47-77f0-4387-acec-ec67652dbe34)
+
 
 2. Déploiement pgAdmin avec volume
 
@@ -220,7 +236,8 @@ spec:
         configMap:
           name: pgadmin-config
 
-👉 Capture : pgAdmin montre déjà le serveur configuré
+![image](https://github.com/user-attachments/assets/d88fb1f1-8fec-4c44-b854-07c7bf02335f)
+
 
 Étape VI - Déploiement de l’ic-webapp dans le cluster
 
@@ -245,7 +262,7 @@ spec:
     spec:
       containers:
       - name: ic-webapp
-        image: <votre_dockerhub>/ic-webapp:1.0
+        image: safouane95/ic-webapp:1.0
         ports:
         - containerPort: 8080
         env:
@@ -254,7 +271,8 @@ spec:
         - name: PGADMIN_URL
           value: "http://pgadmin.icgroup.svc.cluster.local"
 
-👉 Capture : affichage de la page vitrine avec accès à Odoo & pgAdmin depuis le cluster
+![image](https://github.com/user-attachments/assets/194a4229-06fe-4da3-aed2-6ea008a81f88)
+
 
 Étape VII - Services & accès
 
@@ -277,7 +295,6 @@ spec:
 
 Faire de même pour pgadmin et ic-webapp avec type: NodePort
 
-👉 Capture : accès aux applications via NodePort sur Minikube IP
 
 Étape VIII - Vérifications et conclusion
 
@@ -285,7 +302,11 @@ Faire de même pour pgadmin et ic-webapp avec type: NodePort
 
 kubectl get all -n icgroup
 
-👉 Capture : tous les pods et services UP
+![image](https://github.com/user-attachments/assets/ca83b8a8-20e3-4ea6-804a-d23900f0a163)
+
+
+![image](https://github.com/user-attachments/assets/ec17b6da-213e-4528-8abf-36679f42ddac)
+
 
 2. Conclusion
 
