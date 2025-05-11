@@ -282,6 +282,9 @@ spec:
 
 ![image](https://github.com/user-attachments/assets/194a4229-06fe-4da3-aed2-6ea008a81f88)
 
+![image](https://github.com/user-attachments/assets/445ad4ea-f625-42aa-9361-6bc12319de0a)
+
+
 
 Étape VII - Services & accès
 
