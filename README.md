@@ -137,7 +137,8 @@ spec:
     requests:
       storage: 1Gi
 
-![image](https://github.com/user-attachments/assets/8dc9eacc-6665-4b9c-b821-1b56ca769d0f)
+![image](https://github.com/user-attachments/assets/6a984651-8b9b-4268-8356-71c795d3c700)
+
 
 
 Étape IV - Déploiement Odoo
