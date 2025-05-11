@@ -285,7 +285,6 @@ spec:
 
 Étape VII - Services & accès
 
-
 apiVersion: v1
 kind: Service
 metadata:
