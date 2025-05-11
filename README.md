@@ -180,6 +180,9 @@ spec:
           value: postgres
         - name: PASSWORD
           value: admin123
+          
+![image](https://github.com/user-attachments/assets/56252ec3-116b-4de2-988b-02bb3ccb26e0)
+
 
 ![image](https://github.com/user-attachments/assets/245599c5-1f9a-42c5-9ee8-6407b3ce871e)
 
@@ -282,7 +285,7 @@ spec:
 
 ![image](https://github.com/user-attachments/assets/194a4229-06fe-4da3-aed2-6ea008a81f88)
 
-![image](https://github.com/user-attachments/assets/445ad4ea-f625-42aa-9361-6bc12319de0a)
+
 
 
 
