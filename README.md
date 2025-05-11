@@ -149,14 +149,13 @@ spec:
 
 Étape IV - Déploiement Odoo
 
+
+root@template:~/Project-K8S/ic-webapp# cat odoo-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: odoo
   namespace: icgroup
-  labels:
-    app: odoo
-    env: prod
 spec:
   replicas: 1
   selector:
@@ -166,20 +165,31 @@ spec:
     metadata:
       labels:
         app: odoo
-        env: prod
     spec:
+      securityContext:
+        fsGroup: 1000
       containers:
-      - name: odoo
-        image: odoo:13.0
-        ports:
-        - containerPort: 8069
-        env:
-        - name: HOST
-          value: postgres
-        - name: USER
-          value: postgres
-        - name: PASSWORD
-          value: admin123
+        - name: odoo
+          image: odoo:15
+          securityContext:
+            runAsUser: 0  
+          env:
+            - name: HOST
+              value: postgres
+            - name: USER
+              value: odoo
+            - name: PASSWORD
+              value: odoo
+          ports:
+            - containerPort: 8069
+          volumeMounts:
+            - mountPath: /var/lib/odoo
+              name: odoo-storage
+      volumes:
+        - name: odoo-storage
+          persistentVolumeClaim:
+            claimName: odoo-pvc
+
           
 ![image](https://github.com/user-attachments/assets/56252ec3-116b-4de2-988b-02bb3ccb26e0)
 
