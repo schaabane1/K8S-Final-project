@@ -70,7 +70,7 @@ docker push safouane95/ic-webapp:1.0
 ![image](https://github.com/user-attachments/assets/cb75b6aa-360a-46dc-bcba-1cf0fc168b54)
 
 
-Étape II - Déploiement Kubernetes dans Minikube
+Étape II - Déploiement Kubernetes dans K8S
 
 1. Namespace & Label communs
 
