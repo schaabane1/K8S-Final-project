@@ -263,14 +263,12 @@ spec:
 
 Étape VI - Déploiement de l’ic-webapp dans le cluster
 
+root@template:~/Project-K8S/ic-webapp# cat ic-webapp-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ic-webapp
   namespace: icgroup
-  labels:
-    app: ic-webapp
-    env: prod
 spec:
   replicas: 1
   selector:
@@ -280,18 +278,18 @@ spec:
     metadata:
       labels:
         app: ic-webapp
-        env: prod
     spec:
       containers:
-      - name: ic-webapp
-        image: safouane95/ic-webapp:1.0
-        ports:
-        - containerPort: 8080
-        env:
-        - name: ODOO_URL
-          value: "http://odoo.icgroup.svc.cluster.local:8069"
-        - name: PGADMIN_URL
-          value: "http://pgadmin.icgroup.svc.cluster.local"
+        - name: ic-webapp
+          image: safouane95/ic-webapp:1.0
+          env:
+            - name: ODOO_URL
+              value: http://172.180.0.59:30959/
+            - name: PGADMIN_URL
+              value: http://172.180.0.59:32728/
+          ports:
+            - containerPort: 8080
+
 
 ![image](https://github.com/user-attachments/assets/194a4229-06fe-4da3-aed2-6ea008a81f88)
 
