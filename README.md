@@ -12,7 +12,7 @@ pgAdmin4 pour l'administration de la base PostgreSQL
 
 Une application web vitrine (développée en Flask) permet d’accéder à ces deux outils via des URL paramétrables par variables d’environnement.
 
-Objectif : Conteneuriser les applications et les déployer dans un cluster Kubernetes (Minikube).
+Objectif : Conteneuriser les applications et les déployer dans un cluster Kubernetes (K3S).
 
 Étape I - Conteneurisation de l'application web
 
